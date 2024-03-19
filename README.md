@@ -51,7 +51,7 @@ docker build -t pdf-print-service .
 Once the image is built, you can run the service in a Docker container:
 
 ```bash
-docker run -d -p 5000:8080 --name pdf_service pdf-print-service
+docker run -d -p 5000:8080 --name pdf-print-service pdf-print-service
 ```
 
 This command will start the service and bind it to port 8080 on your host machine.
