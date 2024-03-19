@@ -64,7 +64,7 @@ Once the service is running, you can convert HTML to PDF by sending a POST reque
 curl \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"fileName":"example.pdf", "htmlContent":"<!DOCTYPE html><html><head><title>Test PDF</title></head><body><h1>Hello, World!</h1><p>This is a simple HTML document for PDF conversion.</p></body></html>"}'
+  -d '{"fileName":"example.pdf", "htmlContent":"<!DOCTYPE html><html><head><title>Test PDF</title></head><body><h1>Hello, World!</h1><p>This is a simple HTML document for PDF conversion.</p></body></html>"}' \
   http://localhost:5000/pdf
 ```
 
