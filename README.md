@@ -7,7 +7,7 @@ This repository hosts a PDF printing service, designed to convert HTML content i
 - HTML to PDF conversion using PuppeteerSharp.
 - Standalone Web API service built with ASP.NET 8.0.
 - Docker support for easy deployment and scalability.
-- Fully encapsulated environment with all necessary dependencies, including Puppeteer.
+  - Fully encapsulated environment with all necessary dependencies, including Puppeteer.
 
 ## Getting Started
 
@@ -67,8 +67,6 @@ curl \
   -d '{"fileName":"example.pdf", "htmlContent":"<!DOCTYPE html><html><head><title>Test PDF</title></head><body><h1>Hello, World!</h1><p>This is a simple HTML document for PDF conversion.</p></body></html>"}' \
   http://localhost:5000/pdf
 ```
-
-Replace yourfile.html with the path to your HTML file. The service will respond with the generated PDF.
 
 ## Contributing
 
