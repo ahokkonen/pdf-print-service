@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Intems", "Solution
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfPrintService.Tests", "tests\PdfPrintService.Tests\PdfPrintService.Tests.csproj", "{D7C6950E-634B-4FFC-AB8B-323B4F13D034}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D7643E5F-6A17-4B53-8D83-0D2E7E1F7EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,11 +24,16 @@ Global
 		{8D4D3D90-5DE9-4A9B-9993-65FD6563B09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D4D3D90-5DE9-4A9B-9993-65FD6563B09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D4D3D90-5DE9-4A9B-9993-65FD6563B09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C6950E-634B-4FFC-AB8B-323B4F13D034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C6950E-634B-4FFC-AB8B-323B4F13D034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C6950E-634B-4FFC-AB8B-323B4F13D034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C6950E-634B-4FFC-AB8B-323B4F13D034}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D7C6950E-634B-4FFC-AB8B-323B4F13D034} = {D7643E5F-6A17-4B53-8D83-0D2E7E1F7EBC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {566048B9-B6DC-4FE2-9003-43C85B940469}

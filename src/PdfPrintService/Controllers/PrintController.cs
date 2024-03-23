@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PdfPrintService.Converters;
@@ -5,12 +6,26 @@ using PdfPrintService.Models;
 
 namespace PdfPrintService.Controllers;
 
-public class PrintController(DocumentConvertor documentConvertor) : Controller
+public class PrintController : Controller
 {
-    [HttpPost("pdf")]
-    public async Task<IActionResult> Print([FromBody] PdfRequest request)
+    [HttpPost("html/pdf")]
+    public async Task<IActionResult> Print([FromBody] HtmlToPdfRequest request)
     {
-        var pdfContent = await documentConvertor.ConvertToHtml(request.HtmlContent);
-        return File(pdfContent, "application/pdf", $"{request.FileName}.pdf");
+        return GetPdfFile(
+            request.FileName,
+            await DocumentConvertor.ToPdf(request));
+    }
+
+    [HttpPost("url/pdf")]
+    public async Task<IActionResult> Print([FromBody] UrlToPdfRequest request)
+    {
+        return GetPdfFile(
+            request.FileName,
+            await DocumentConvertor.ToPdf(request));
+    }
+
+    private FileStreamResult GetPdfFile(string fileName, Stream stream)
+    {
+        return File(stream, "application/pdf", $"{fileName}.pdf");
     }
 }
