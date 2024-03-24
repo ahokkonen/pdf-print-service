@@ -58,14 +58,26 @@ This command will start the service and bind it to port 8080 on your host machin
 
 ## How to Use
 
-Once the service is running, you can convert HTML to PDF by sending a POST request to the service endpoint with your HTML content. Here is an example using curl:
+Once the service is running, you can convert HTML to PDF by sending a POST request to the service endpoint with your HTML content.
+Here is an example using curl:
 
 ```bash
 curl \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '{"fileName":"example.pdf", "htmlContent":"<!DOCTYPE html><html><head><title>Test PDF</title></head><body><h1>Hello, World!</h1><p>This is a simple HTML document for PDF conversion.</p></body></html>"}' \
-  http://localhost:5000/pdf
+  -d '{"fileName":"example.pdf", "content":"<!DOCTYPE html><html><head><title>Test PDF</title></head><body><h1>Hello, World!</h1><p>This is a simple HTML document for PDF conversion.</p></body></html>"}' \
+  http://localhost:5000/api/html-to-pdf
+```
+
+Also you can convert a URL to PDF by sending a POST request to the service endpoint with the URL.
+Here is an example using curl:
+
+```bash
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"fileName":"example.pdf", "url":"https://www.google.com"}' \
+  http://localhost:5000/api/url-to-pdf
 ```
 
 ## Contributing

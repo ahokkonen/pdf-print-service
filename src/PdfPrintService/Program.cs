@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<DocumentConvertor>();
+builder.Services.AddTransient<PdfConvertor>();
 
 builder.Services.AddControllers();
 
@@ -25,6 +25,8 @@ app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
+    
+    options.DefaultModelsExpandDepth(-1);
 });
 
 app.MapControllers();

@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using PdfPrintService.Models;
@@ -9,38 +10,31 @@ namespace PdfPrintService.Converters;
 /// <summary>
 /// Converts given content from HTML or URL to PDF using PuppeteerSharp.
 /// </summary>
-public class DocumentConvertor
+public class PdfConvertor
 {
-    static DocumentConvertor()
+    static PdfConvertor()
     {
         new BrowserFetcher().DownloadAsync().Wait();
     }
 
-    public static async Task<Stream> ToPdf(HtmlToPdfRequest request)
+    public static async Task<Stream> Convert(PdfRequest request)
     {
         await using var browser = await GetBrowser();
         await using var page = await browser.NewPageAsync();
 
         await page.EmulateMediaTypeAsync(MediaType.Screen);
-
-        await page.SetContentAsync(request.Content);
-
-        var options = GetPdfOptions();
-        var content = await page.PdfStreamAsync(options);
-
-        await browser.CloseAsync();
-
-        return content;
-    }
-
-    public static async Task<Stream> ToPdf(UrlToPdfRequest request)
-    {
-        await using var browser = await GetBrowser();
-        await using var page = await browser.NewPageAsync();
-
-        await page.EmulateMediaTypeAsync(MediaType.Screen);
-
-        await page.GoToAsync(request.Url);
+        
+        switch (request)
+        {
+            case HtmlToPdfRequest htmlRequest:
+                await page.SetContentAsync(htmlRequest.Content);
+                break;
+            case UrlToPdfRequest urlRequest:
+                await page.GoToAsync(urlRequest.Url);
+                break;
+            default:
+                throw new ArgumentException("Invalid request type");
+        }
 
         var options = GetPdfOptions();
         var content = await page.PdfStreamAsync(options);

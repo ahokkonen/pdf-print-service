@@ -1,6 +1,3 @@
 namespace PdfPrintService.Models;
 
-public class UrlToPdfRequest : Request
-{
-    public string Url { get; set; }
-}
+public record UrlToPdfRequest(string FileName, string Url) : PdfRequest(FileName);
